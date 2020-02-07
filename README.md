@@ -2,6 +2,8 @@
 
 ![](https://balena.io/blog/content/images/2019/03/balenaSense_blog.jpg)
 
+_The repo has been modified to use a DHT11 sensor employing [this application](https://github.com/allthingsclowd/docker_rpi3_python_iot_api_dht_11_22)_
+
 A Raspberry Pi [balenaCloud](https://www.balena.io/cloud/) starter project taking readings from a **either a Bosch BME680 sensor, a Sense-HAT, or a 1-wire temperature sensor (such as a Dallas DS18B20)**, storing using InfluxDB and reporting using Grafana.
 
 The Bosch BME680 is recommended as it includes sensors for temperature, humidity, pressure and gas content and is available on a breakout board from a few different places for around $10-$20.
