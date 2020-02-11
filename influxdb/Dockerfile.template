@@ -4,4 +4,6 @@ RUN apk add influxdb
 
 RUN sed -i 's|/var/lib/influxdb|/data/influxdb|g' /etc/influxdb.conf
 
+EXPOSE 8086
+
 CMD ["influxd"]

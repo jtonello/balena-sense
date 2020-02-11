@@ -49,7 +49,7 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 9,
+        "w": 7,
         "x": 0,
         "y": 1
       },
@@ -132,8 +132,8 @@
       "fillGradient": 0,
       "gridPos": {
         "h": 5,
-        "w": 12,
-        "x": 9,
+        "w": 14,
+        "x": 7,
         "y": 1
       },
       "id": 14,
@@ -243,52 +243,71 @@
     },
     {
       "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "format": "farenheit",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": true,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
       "gridPos": {
-        "h": 8,
-        "w": 9,
+        "h": 5,
+        "w": 7,
         "x": 0,
         "y": 6
       },
       "id": 2,
+      "interval": null,
       "links": [],
-      "options": {
-        "fieldOptions": {
-          "calcs": [
-            "last"
-          ],
-          "defaults": {
-            "mappings": [],
-            "max": 100,
-            "min": 0,
-            "thresholds": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "override": {},
-          "values": false
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
         },
-        "orientation": "horizontal",
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
       },
-      "pluginVersion": "6.3.6",
+      "tableColumn": "",
       "targets": [
         {
-          "alias": "dht11",
           "groupBy": [],
-          "hide": false,
           "measurement": "balena-sense",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT \"temperature\"*(9.0/5.0)+32 FROM \"balena-sense\" WHERE $timeFilter",
-          "rawQuery": false,
+          "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -298,62 +317,25 @@
                   "temperature"
                 ],
                 "type": "field"
-              },
-              {
-                "params": [
-                  "*(9/5)+32"
-                ],
-                "type": "math"
               }
             ]
           ],
-          "tags": [
-            {
-              "key": "balena_sense_id",
-              "operator": "=",
-              "value": "dht11"
-            }
-          ]
-        },
-        {
-          "alias": "w1",
-          "groupBy": [],
-          "hide": false,
-          "measurement": "balena-sense",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT \"temperature\"*(9.0/5.0)+32 FROM \"balena-sense\" WHERE $timeFilter",
-          "rawQuery": false,
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "temperature"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [
-                  "*(9/5)+32"
-                ],
-                "type": "math"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "balena_sense_id",
-              "operator": "=",
-              "value": "w1"
-            }
-          ]
+          "tags": []
         }
       ],
+      "thresholds": "72,80",
       "title": "Temperature",
       "transparent": true,
-      "type": "gauge"
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
     },
     {
       "aliasColors": {},
@@ -361,11 +343,11 @@
       "dashLength": 10,
       "dashes": false,
       "fill": 1,
-      "fillGradient": 1,
+      "fillGradient": 0,
       "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 9,
+        "h": 5,
+        "w": 14,
+        "x": 7,
         "y": 6
       },
       "id": 8,
@@ -379,7 +361,7 @@
         "values": false
       },
       "lines": true,
-      "linewidth": 2,
+      "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
       "options": {
@@ -396,13 +378,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "alias": "w1",
           "groupBy": [],
           "measurement": "balena-sense",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT \"temperature\"  / 100 FROM \"balena-sense\" WHERE $timeFilter",
-          "rawQuery": false,
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
@@ -412,56 +391,10 @@
                   "temperature"
                 ],
                 "type": "field"
-              },
-              {
-                "params": [
-                  "*(9/5)+32"
-                ],
-                "type": "math"
               }
             ]
           ],
-          "tags": [
-            {
-              "key": "balena_sense_id",
-              "operator": "=",
-              "value": "w1"
-            }
-          ]
-        },
-        {
-          "alias": "dht11",
-          "groupBy": [],
-          "measurement": "balena-sense",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT \"temperature\" FROM \"balena-sense\" WHERE (\"balena_sense_id\" = 'dht11') AND $timeFilter",
-          "rawQuery": false,
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "temperature"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [
-                  "*(9/5)+32"
-                ],
-                "type": "math"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "balena_sense_id",
-              "operator": "=",
-              "value": "dht11"
-            }
-          ]
+          "tags": []
         }
       ],
       "thresholds": [
@@ -491,7 +424,6 @@
         "sort": 0,
         "value_type": "individual"
       },
-      "transparent": true,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -532,7 +464,7 @@
     "list": []
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {
@@ -563,5 +495,5 @@
   "timezone": "",
   "title": "balenaSense",
   "uid": "pF3gRDiRk",
-  "version": 5
+  "version": 1
 }

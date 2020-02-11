@@ -23,10 +23,10 @@ def main():
   if result.is_valid():
     templateData = {
         'humidity' : result.humidity,
-        'temperature' : 9.0/5.0 * result.temperature + 32, 
+        'temperature' : result.temperature, 
    }
   else:
-    templateData = { 'empty' }
+    templateData = { 'empty' : 0 }
 
   # Pass the template data into the template main.html and return it to the user
   return Response(json.dumps(templateData), mimetype='application/json')
@@ -40,7 +40,7 @@ def action(action):
   action_result = 'empty'
   if result.is_valid():
     if action == "temperature":
-      action_result = 9.0/5.0 * result.temperature + 32
+      action_result = result.temperature
     if action == "humidity":
       action_result = result.humidity
 
@@ -52,4 +52,4 @@ def action(action):
   return Response(json.dumps(templateData), mimetype='application/json')
 
 if __name__ == "__main__":
-  app.run(host='0.0.0.0', port=8989, debug=True)
+  app.run(host='0.0.0.0', port=8989, debug=False)
