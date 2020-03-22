@@ -28,8 +28,10 @@ def main():
   else:
     templateData = { 'empty' : 0 }
 
-  # Pass the template data into the template main.html and return it to the user
-  return Response(json.dumps(templateData), mimetype='application/json')
+  while True:
+    # Pass the template data into the template main.html and return it to the user
+    return Response(json.dumps(templateData), mimetype='application/json')
+    time.sleep(1)
 
 # The function below is executed when someone requests a URL with the pin number and action in it:
 @app.route("/<action>")

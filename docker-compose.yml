@@ -28,7 +28,6 @@ services:
       - 'sense-data:/data'
     ports:
       - "8989"
-      - "4321"
   telegraf:
     build: ./telegraf
     restart: always
